@@ -1,7 +1,7 @@
 
 
 # AWS EC2 instance resource definition
-resource "aws_instance" "ec2" {
+resource "aws_instance" "asee_ec2" {
   # Use the dynamically retrieved AMI ID from the AWS AMI data source
   ami                    = data.aws_ami.ami.image_id
   
@@ -9,7 +9,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type  # parameterized for flexibility
   
   # The key pair name for SSH access to the instance
-  key_name               = var.key_name
+  key_name               = "aseeproject"
   
   # Subnet ID where the EC2 instance will be launched (usually public subnet)
   subnet_id              = aws_subnet.public-subnet.id
@@ -36,9 +36,9 @@ resource "aws_instance" "ec2" {
 
 # Outputs to access instance details after creation
 output "instance_id" {
-  value = aws_instance.ec2.id
+  value = aws_instance.asee_ec2.id
 }
 
 output "instance_public_ip" {
-  value = aws_instance.ec2.public_ip
+  value = aws_instance.asee_ec2.public_ip
 }
