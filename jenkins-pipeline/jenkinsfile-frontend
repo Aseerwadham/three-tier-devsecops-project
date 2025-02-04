@@ -96,7 +96,7 @@ pipeline {
             }
             steps {
                 dir('kubernetes-manifests/frontend') {
-                    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'GITHUB', variable: 'GITHUB_TOKEN')]) {
                         // First, list the files in the directory to check if deployment.yaml exists
                         sh '''
                             echo "Listing files in kubernetes-manifests/frontend directory:"
